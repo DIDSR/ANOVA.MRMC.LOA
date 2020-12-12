@@ -2,11 +2,15 @@ Package: ANOVA.MRMC.LOA
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Si Wen
+Maintainer: Si Wem <si.wen@fda.hhs.gov>
+Description: This package contains the data and function for conducting the simulation study 
+  in the manuscript "Three-way Mixed Effect ANOVA to Estimate MRMC Limits of Agreement".
+License: CC0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
+Depends: 
+  R (>= 3.5.0),
+  iMRMC
+Imports: stats

@@ -42,14 +42,16 @@
 #'   \item{BR_CV}{coefficient of variation for BRBM variance}
 #'   }
 #' @export
+#' @importFrom stats var
+#' @import iMRMC
 #'
 #' @examples
 #' library(iMRMC)
-#' nR.list <- c(3,4,5)
+#' nR.list <- c(5)
 #' nC.list <- c(100)
 #' sigma_C.list <- c(1)
 #' alpha_R.list <- c(10)
-#' result <- validateMRMCVarEstimation(alpha_R.list, sigma_C.list)
+#' #result <- validateMRMCVarEstimation(nR.list, nC.list, alpha_R.list, sigma_C.list)
 #'
 validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.list, nTrials = 1000){
 
@@ -64,7 +66,7 @@ validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.li
         for(sigma_C in sigma_C.list){
           # Config ----
 
-          config = sim.new.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
+          config = iMRMC::sim.NormalIG.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
                                                alpha_R = alpha_R, C_dist = 'normal',
                                                modalityID = c("testA","testB"))
 
@@ -72,9 +74,9 @@ validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.li
 
           # Simulation & LOA ----
 
-          dFrames = lapply(configs.Task, FUN = sim.new.Hierarchical)
-          Results.WR = lapply(dFrames, FUN = laWRBM.anova)
-          Results.BR = lapply(dFrames, FUN = laBRBM.anova)
+          dFrames = lapply(configs.Task, FUN = iMRMC::sim.NormalIG.Hierarchical)
+          Results.WR = lapply(dFrames, FUN = iMRMC::laWRBM.anova)
+          Results.BR = lapply(dFrames, FUN = iMRMC::laBRBM.anova)
 
           # Aggregate ----
 
@@ -97,11 +99,11 @@ validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.li
                              WR_var_MCmean = WR_var_MCmean,WR_var_MCvar = WR_var_MCvar,
                              True_WR_var = True_WR_var,
                              WR_var_relative_bias = (WR_var_MCmean - True_WR_var)/True_WR_var,
-                             WR_CV <- sqrt(WR_var_MCvar)/True_WR_var,
+                             WR_CV = sqrt(WR_var_MCvar)/True_WR_var,
                              BR_var_MCmean = BR_var_MCmean,BR_var_MCvar = BR_var_MCvar,
                              True_BR_var = True_BR_var,
                              BR_var_relative_bias = (BR_var_MCmean - True_BR_var)/True_BR_var,
-                             BR_CV <- sqrt(BR_var_MCvar)/True_BR_var)
+                             BR_CV = sqrt(BR_var_MCvar)/True_BR_var)
           agg_result <- rbind(agg_result, result)
         }
       }

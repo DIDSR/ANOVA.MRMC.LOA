@@ -2,3 +2,5 @@
 
 export(validateMRMCVarEstimation)
 export(validateSimulation)
+import(iMRMC)
+importFrom(stats,var)

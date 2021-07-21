@@ -1,7 +1,8 @@
 # [ANOVA.MRMC.LOA](https://github.com/SiWen314/ANOVA.MRMC.LOA)
 
 This is an R package containing the codes and simulated results for the manuscript
-  "Three-way Mixed Effect ANOVA to Estimate MRMC Limits of Agreement" by Si Wen and Brandon Gallas.
+
+Wen, S.& Gallas, B. D. (2021). Three-way Mixed Effect ANOVA to Estimate MRMC Limits of Agreement. arXiv preprint	[arXiv:2107.08891](https://arxiv.org/abs/2107.08891). Submitted to Statistics in Biopharmaceutical Research.
   
 [SimulationStudies.pdf](https://github.com/SiWen314/ANOVA.MRMC.LOA/blob/main/inst/extra/SimulationStudies.pdf) shows how to replicate the results for the simulation studies in the manuscript.
 

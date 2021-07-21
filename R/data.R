@@ -1,5 +1,5 @@
 #' @title{
-#' Result of simulation study to verify the simulation is consistent with the derived theoretical values
+#' This is a data frame with the result from the simulation study to verify the simulation is consistent with the derived theoretical values
 #' }
 #' @details
 #' There are two parameter sets for this simulation:
@@ -40,7 +40,7 @@
 #'
 #'
 #' @title{
-#' Result of simulation study to validate and characterize the MRMC limits of agreement estimates
+#' This is a data frame with the result from the simulation study to validate and characterize the MRMC limits of agreement estimates
 #' }
 #' @details
 #' There are three parameter sets for this simulation:

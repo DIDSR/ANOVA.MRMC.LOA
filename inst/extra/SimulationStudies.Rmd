@@ -7,11 +7,14 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(iMRMC)
 library(ANOVA.MRMC.LOA)
 ```
 
-In this R Markdown file, we provide the code for the simulation studies in the manuscript. All the functions and dataset used in this file are in ANOVA.MRMC.LOA R package (\url{https://github.com/SiWen314/ANOVA.MRMC.LOA}).Two simulation studies were conducted to validate both the simulation and limits of agreement variance estimates.
+In this R Markdown file, we provide the code for the simulation studies in the manuscript
+
+Wen, S.& Gallas, B. D. (2021). Three-way Mixed Effect ANOVA to Estimate MRMC Limits of Agreement. arXiv preprint	arXiv:2107.08891 (\url{https://arxiv.org/abs/2107.08891}). Submitted to Statistics in Biopharmaceutical Research.
+
+All the functions and dataset used in this file are in ANOVA.MRMC.LOA R package (\url{https://github.com/SiWen314/ANOVA.MRMC.LOA}).Two simulation studies were conducted to validate both the simulation and limits of agreement variance estimates.
 
 ## Verify the simulation is consistent with the derived theoretical values
 

@@ -32,10 +32,8 @@
 #' }
 #' @export
 #' @importFrom stats var
-#' @import iMRMC
 #'
 #' @examples
-#' library(iMRMC)
 #' sigma_C.list <- c(1)
 #' alpha_R.list <- c(10)
 #' #result <- validateSimulation(alpha_R.list, sigma_C.list)

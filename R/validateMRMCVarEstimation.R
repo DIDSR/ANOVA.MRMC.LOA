@@ -43,10 +43,8 @@
 #'   }
 #' @export
 #' @importFrom stats var
-#' @import iMRMC
 #'
 #' @examples
-#' library(iMRMC)
 #' nR.list <- c(5)
 #' nC.list <- c(100)
 #' sigma_C.list <- c(1)

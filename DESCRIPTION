@@ -1,11 +1,11 @@
 Package: ANOVA.MRMC.LOA
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Multi-reader multi-case limits of agreement by ANOVA
+Version: 1.0
 Author: Si Wen
-Maintainer: Si Wem <si.wen@fda.hhs.gov>
-Description: This package contains the data and function for conducting the simulation study 
-  in the manuscript 
+Maintainer: Si Wen <si.wen@fda.hhs.gov>
+Description: This package contains the data and functions for conducting 
+  the methods and simulations described in the manuscript 
   Wen, S.& Gallas, B. D. (2021). Three_way Mixed Effect ANOVA to Estimate MRMC 
   Limits of Agreement. arXiv preprint	arXiv:2107.08891. Submitted to Statistics 
   in Biopharmaceutical Research.

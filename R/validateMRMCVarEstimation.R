@@ -49,7 +49,7 @@
 #' nC.list <- c(100)
 #' sigma_C.list <- c(1)
 #' alpha_R.list <- c(10)
-#' #result <- validateMRMCVarEstimation(nR.list, nC.list, alpha_R.list, sigma_C.list)
+#' result <- validateMRMCVarEstimation(nR.list, nC.list, alpha_R.list, sigma_C.list, nTrials = 1000)
 #'
 validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.list, nTrials = 1000){
 
@@ -72,9 +72,9 @@ validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.li
 
           # Simulation & LOA ----
 
-          dFrames = lapply(configs.Task, FUN = iMRMC::sim.NormalIG.Hierarchical)
-          Results.WR = lapply(dFrames, FUN = iMRMC::laWRBM.anova)
-          Results.BR = lapply(dFrames, FUN = iMRMC::laBRBM.anova)
+          dFrames = lapply(configs.Task, FUN = sim.NormalIG.Hierarchical)
+          Results.WR = lapply(dFrames, FUN = laWRBM.anova)
+          Results.BR = lapply(dFrames, FUN = laBRBM.anova)
 
           # Aggregate ----
 

@@ -36,7 +36,7 @@
 #' @examples
 #' sigma_C.list <- c(1)
 #' alpha_R.list <- c(10)
-#' #result <- validateSimulation(alpha_R.list, sigma_C.list)
+#' result <- validateSimulation(alpha_R.list, sigma_C.list, nTrials = 10)
 #'
 validateSimulation <- function(alpha_R.list, sigma_C.list, nTrials = 100000){
   # For the independent simulation, we simulate 2 readers and 1 case
@@ -52,7 +52,7 @@ validateSimulation <- function(alpha_R.list, sigma_C.list, nTrials = 100000){
     for(alpha_R in alpha_R.list){
 
       # Config ----
-      config = iMRMC::sim.NormalIG.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
+      config = sim.NormalIG.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
                                            alpha_R = alpha_R, C_dist = 'normal',
                                            modalityID = c("testA","testB"))
 
@@ -60,7 +60,7 @@ validateSimulation <- function(alpha_R.list, sigma_C.list, nTrials = 100000){
 
       # Simulation ----
 
-      dFrames = lapply(configs.Task, FUN = iMRMC::sim.NormalIG.Hierarchical)
+      dFrames = lapply(configs.Task, FUN = sim.NormalIG.Hierarchical)
 
       # Calculate independent WRBR and BRBR independence ----
       Results.WR = lapply(dFrames, FUN = function(x){

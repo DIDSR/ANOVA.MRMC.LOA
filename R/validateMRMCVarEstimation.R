@@ -64,7 +64,7 @@ validateMRMCVarEstimation <- function(nR.list, nC.list, alpha_R.list, sigma_C.li
         for(sigma_C in sigma_C.list){
           # Config ----
 
-          config = iMRMC::sim.NormalIG.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
+          config = sim.NormalIG.Hierarchical.config(nR=nR, nC=nC, sigma_C = sigma_C,
                                                alpha_R = alpha_R, C_dist = 'normal',
                                                modalityID = c("testA","testB"))
 

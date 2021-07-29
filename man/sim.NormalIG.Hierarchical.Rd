@@ -25,32 +25,32 @@ sim.NormalIG.Hierarchical(
   \item Mean and fixed effects:
   \itemize{
     \item mu: [num] grand mean
-    \item tau_A: [num] modality A
-    \item tau_B: [num] modality B
+    \item tau_A: [num] modality A, m.i (i=A)
+    \item tau_B: [num] modality B, m.i (i=B)
   }
-  \item Reader-case interaction term
+  \item Reader-case interaction term RC
   \itemize{
     \item sigma_C: [num] variance of case factor (if \code{C_dist="normal"})
-    \item a_C:     [num] alpha for distribution of case (if \code{C_dist="beta"})
-    \item b_C:     [num] beta for distribution of case (if \code{C_dist="beta"})
-    \item alpha_R: [num] shape parameter for reader
-    \item beta_R:  [num] scale parameter for reader
+    \item a_C:     [num] alpha for distribution of case term, C (if \code{C_dist="beta"})
+    \item b_C:     [num] beta for distribution of case term, C (if \code{C_dist="beta"})
+    \item alpha_R: [num] shape parameter for reader term, R
+    \item beta_R:  [num] scale parameter for reader term, R
   }
-  \item Modality-reader-case-replicate interaction term for modality A
+  \item Modality-reader-case-replicate interaction term for modality A, tauRCE.A
     \itemize{
     \item sigma_C.A: [num] variance of case factor (if \code{C_dist="normal"})
-    \item a_C.A:     [num] alpha for distribution of case (if \code{C_dist="beta"})
-    \item b_C.A:     [num] beta for distribution of case (if \code{C_dist="beta"})
-    \item alpha_R.A: [num] shape parameter for reader
-    \item beta_R.A:  [num] scale parameter for reader
+    \item a_C.A:     [num] alpha for distribution of case-modality interaction term, tauC.A (if \code{C_dist="beta"})
+    \item b_C.A:     [num] beta for distribution of case-modality interaction term, tauC.A (if \code{C_dist="beta"})
+    \item alpha_R.A: [num] shape parameter for reader-modality interaction term, AR
+    \item beta_R.A:  [num] scale parameter for reader-modality interaction term, AR
   }
-  \item Modality-reader-case-replicate interaction term for modality B
+  \item Modality-reader-case-replicate interaction term for modality B, tauRCE.B
     \itemize{
     \item sigma_C.B: [num] variance of case factor (if \code{C_dist="normal"})
-    \item a_C.B:     [num] alpha for distribution of case (if \code{C_dist="beta"})
-    \item b_C.B:     [num] beta for distribution of case (if \code{C_dist="beta"})
-    \item alpha_R.B: [num] shape parameter for reader
-    \item beta_R.B:  [num] scale parameter for reader
+    \item a_C.B:     [num] alpha for distribution of case-modality interaction term, tauC.B  (if \code{C_dist="beta"})
+    \item b_C.B:     [num] beta for distribution of case-modality interaction term, tauC.B  (if \code{C_dist="beta"})
+    \item alpha_R.B: [num] shape parameter for reader-modality interaction term, BR
+    \item beta_R.B:  [num] scale parameter for reader-modality interaction term, BR
   }
   \item Scales for the case related terms and interaction terms
     \itemize{
@@ -61,13 +61,13 @@ sim.NormalIG.Hierarchical(
   }
 }}
 
-\item{R}{[vector] fix the reader factor across different simulation. Default \code{R = NULL}}
+\item{R}{[vector] fix the reader term across different simulation. Default \code{R = NULL}}
 
-\item{AR}{[vector] fix the modality-reader interaction. Default \code{AR = NULL}}
+\item{AR}{[vector] fix the modality-reader interaction term across different simulation. Default \code{AR = NULL}}
 
-\item{BR}{[vector] fix the modality-reader interaction. Default \code{BR = NULL}}
+\item{BR}{[vector] fix the modality-reader interaction term across different simulation. Default \code{BR = NULL}}
 
-\item{is.within}{[bol] whether the data are within-modality (AR==BR). Default \code{is.within=FALSE}}
+\item{is.within}{[logic] whether the simulated data are replicates from the same reader within a single modality (AR==BR). Default \code{is.within=FALSE}}
 }
 \value{
 df   [data.frame] with nR x nC x 2 rows including
@@ -79,11 +79,11 @@ df   [data.frame] with nR x nC x 2 rows including
 }
 }
 \description{
-This procedure simulates an MRMC data set for a MRMC agreement study comparing two 
+This procedure simulates an MRMC data set for a MRMC agreement study comparing two
 modalities.It is a hierarchical model consists of two interaction terms: reader-case
 interaction and modality-reader-case-replicate interaction. Both the interaction
-terms are conditional normal distributed, with the case(-related) factor contributing 
-to the conditional mean and the reader(-related) factor contributing to the conditional 
+terms are conditional normal distributed, with the case(-related) factor contributing
+to the conditional mean and the reader(-related) factor contributing to the conditional
 variance.
 }
 \details{
@@ -91,10 +91,17 @@ The model is as the following structure:
 X.ijkl = mu + m.i + RC.jk + mRCE.ijkl
 \itemize{
   \item mu = grand mean
-  \item m.i = modalities (levels: A and B)
+  \item m.i = modalities (levels: A and B), which are tau_A and tau_B in config
   \item RC.jk|R.j,C.k ~ N(C.k, R.j) reader-case interaction term
-  \item mRCE.ijkl|mR.ij,mC.ik ~ N(mC.ik, mR.ij) modality-reader-case-replicate term
+  \item mRCE.ijkl|mR.ij,mC.ik ~ N(mC.ik, mR.ij) modality-reader-case-replicate term.
+  tauC.A and tauC.B are the mC.ik term for modality A and B. AR and BR are mR.ij term for modality A and B
   \item C.k and mC.ik are Normal/beta distributed
   \item R.j and mR.ij are Inverse-Gamma distributed
 }
+}
+\examples{
+# Create a sample configuration object
+config <- sim.NormalIG.Hierarchical.config()
+# Simulate an MRMC ROC data set
+dFrame <- sim.NormalIG.Hierarchical(config)
 }

@@ -59,6 +59,6 @@ nR.list <- c(5)
 nC.list <- c(100)
 sigma_C.list <- c(1)
 alpha_R.list <- c(10)
-#result <- validateMRMCVarEstimation(nR.list, nC.list, alpha_R.list, sigma_C.list)
+result <- validateMRMCVarEstimation(nR.list, nC.list, alpha_R.list, sigma_C.list, nTrials = 10)
 
 }

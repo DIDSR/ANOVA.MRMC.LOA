@@ -40,6 +40,6 @@ as \eqn{relativeBias~(\tilde{V}_{BR}^{12})=(\tilde{V}_{BR}^{12}-V_{BR}^{12})/V_{
 \examples{
 sigma_C.list <- c(1)
 alpha_R.list <- c(10)
-#result <- validateSimulation(alpha_R.list, sigma_C.list)
+result <- validateSimulation(alpha_R.list, sigma_C.list, nTrials = 10)
 
 }

@@ -6,9 +6,9 @@ Author: Si Wen
 Maintainer: Si Wen <si.wen@fda.hhs.gov>
 Description: This package contains the data and functions for conducting 
   the methods and simulations described in the manuscript 
-  Wen, S.& Gallas, B. D. (2021). Three_way Mixed Effect ANOVA to Estimate MRMC 
-  Limits of Agreement. arXiv preprint	arXiv:2107.08891. Submitted to Statistics 
-  in Biopharmaceutical Research.
+  Wen, S., & Gallas, B. D. (2022). Three-Way Mixed Effect ANOVA to 
+  Estimate MRMC Limits of Agreement. Statistics in Biopharmaceutical 
+  Research, 1-10. https://doi.org/10.1080/19466315.2022.2063169.
 License: CC0
 Encoding: UTF-8
 LazyData: true
